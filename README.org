@@ -1,0 +1,27 @@
+# Exámenes de programación funcional con Haskell. Vol. 1 (Curso 2009-10)
+
+Este repositorio es una recopilación de las soluciones de ejercicios de los
+exámenes de programación funcional con Haskell de la [[http://www.cs.us.es/~jalonso/cursos/i1m-09][asignatura de Informática]]
+del [[http://www.matematicas.us.es/estudios/grado-en-matematicas][Grado en Matemática]] de la [[http://www.us.es][Universidad de Sevilla]].
+
+Los exámenes se realizaron en el aula de informática y su duración
+fue de 2 horas. La materia de cada examen es la impartida desde el
+comienzo del curso (generalmente, el 1 de octubre) hasta la fecha
+del examen. Dicha materia se encuentra en los libros de temas y
+ejercicios del curso:
++ [[https://www.cs.us.es/~jalonso/cursos/i1m-09/temas/2009-10-IM-temas-PF.pdf][Temas de programación funcional (curso 2009–10)]]
++ [[https://www.cs.us.es/~jalonso/cursos/i1m-09/ejercicios/ejercicios-I1M-2009.pdf][Ejercicios de "Informática de 1º de Matemáticas" (2009–10)]].
++ [[http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf][Piensa en Haskell (Ejercicios de programación funcional con Haskell)]].
+
+El libro consta de 2 capítulos correspondientes a los 2 grupos de la
+asignatura. En cada capítulo hay una sección por cada uno de los
+exámenes del grupo. Los ejercicios de cada examen han sido propuestos
+por los profesores de su grupo (cuyos nombres aparecen en el título del
+capítulo). Sin embargo, los he modificado para unificar el estilo de su
+presentación.
+
+Finalmente, el libro contiene dos apéndices. Uno con el método de Polya
+de resolución de problemas (sobre el que se hace énfasis durante todo el
+curso) y el otro con un resumen de las funciones de Haskell de uso más
+frecuente.
+
