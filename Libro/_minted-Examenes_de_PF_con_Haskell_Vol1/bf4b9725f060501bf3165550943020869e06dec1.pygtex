@@ -1,0 +1,192 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Informática (1º del Grado en Matemáticas, Grupo 1)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Examen de la 3ª convocatoria (17 de diciembre de 2010)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{k+kr}{import} \PYG{n+nn}{Data.List}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1. Definir la función }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ullman :: (Num a, Ord a) =\PYGZgt{} a \PYGZhy{}\PYGZgt{} Int \PYGZhy{}\PYGZgt{} [a] \PYGZhy{}\PYGZgt{} Bool}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (ullman t k xs) se verifica si xs tiene un subconjunto con k }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} elementos cuya suma sea menor que t. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ullman 9 3 [1..10] == True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ullman 5 3 [1..10] == False}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 1ª solución (corta y eficiente)}
+\PYG{n+nf}{ullman} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Ord} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{Num} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{ullman} \PYG{n}{t} \PYG{n}{k} \PYG{n}{xs} \PYG{o+ow}{=} \PYG{n}{sum} \PYG{p}{(}\PYG{n}{take} \PYG{n}{k} \PYG{p}{(}\PYG{n}{sort} \PYG{n}{xs}\PYG{p}{))} \PYG{o}{\PYGZlt{}} \PYG{n}{t}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 2ª solución (larga e ineficiente)}
+\PYG{n+nf}{ullman2} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Num} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{Ord} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{ullman2} \PYG{n}{t} \PYG{n}{k} \PYG{n}{xs} \PYG{o+ow}{=} 
+    \PYG{p}{[}\PYG{n}{ys} \PYG{o}{|} \PYG{n}{ys} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{subconjuntos} \PYG{n}{xs}\PYG{p}{,} \PYG{n}{length} \PYG{n}{ys} \PYG{o}{==} \PYG{n}{k}\PYG{p}{,} \PYG{n}{sum} \PYG{n}{ys} \PYG{o}{\PYGZlt{}} \PYG{n}{t}\PYG{p}{]} \PYG{o}{/=} \PYG{k+kt}{[]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (subconjuntos xs) es la lista de los subconjuntos de xs. Por }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    subconjuntos \PYGZdq{}bc\PYGZdq{}  ==  [\PYGZdq{}\PYGZdq{},\PYGZdq{}c\PYGZdq{},\PYGZdq{}b\PYGZdq{},\PYGZdq{}bc\PYGZdq{}]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    subconjuntos \PYGZdq{}abc\PYGZdq{} ==  [\PYGZdq{}\PYGZdq{},\PYGZdq{}c\PYGZdq{},\PYGZdq{}b\PYGZdq{},\PYGZdq{}bc\PYGZdq{},\PYGZdq{}a\PYGZdq{},\PYGZdq{}ac\PYGZdq{},\PYGZdq{}ab\PYGZdq{},\PYGZdq{}abc\PYGZdq{}]}
+\PYG{n+nf}{subconjuntos} \PYG{o+ow}{::} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[[}\PYG{n}{a}\PYG{p}{]]}
+\PYG{n+nf}{subconjuntos} \PYG{k+kt}{[]} \PYG{o+ow}{=} \PYG{p}{[}\PYG{k+kt}{[]}\PYG{p}{]}
+\PYG{n+nf}{subconjuntos} \PYG{p}{(}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{xs}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{zss}\PYG{o}{++}\PYG{p}{[}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{ys} \PYG{o}{|} \PYG{n}{ys} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{zss}\PYG{p}{]}
+    \PYG{k+kr}{where} \PYG{n}{zss} \PYG{o+ow}{=} \PYG{n}{subconjuntos} \PYG{n}{xs}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Los siguientes ejemplos muestran la diferencia en la eficencia:}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} ullman 9 3 [1..20]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    (0.02 secs, 528380 bytes)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} ullman2 9 3 [1..20]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    (4.08 secs, 135267904 bytes)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} ullman 9 3 [1..100]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    (0.02 secs, 526360 bytes)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} ullman2 9 3 [1..100]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      C\PYGZhy{}c C\PYGZhy{}cInterrupted.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    Agotado}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 2. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumasDe2Cuadrados :: Integer \PYGZhy{}\PYGZgt{} [(Integer, Integer)]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (sumasDe2Cuadrados n) es la lista de los pares de números}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tales que la suma de sus cuadrados es n y el primer elemento del par}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} es mayor o igual que el segundo. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumasDe2Cuadrados 25  ==  [(5,0),(4,3)]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 1ª definición:}
+\PYG{n+nf}{sumasDe2Cuadrados\PYGZus{}1} \PYG{o+ow}{::} \PYG{k+kt}{Integer} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[(}\PYG{k+kt}{Integer}\PYG{p}{,} \PYG{k+kt}{Integer}\PYG{p}{)]}
+\PYG{n+nf}{sumasDe2Cuadrados\PYGZus{}1} \PYG{n}{n} \PYG{o+ow}{=} 
+    \PYG{p}{[(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{n}{n}\PYG{p}{,}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{l+m+mi}{0}\PYG{p}{],}
+             \PYG{n}{y} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{o}{..}\PYG{n}{x}\PYG{p}{],}
+             \PYG{n}{x}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{y}\PYG{o}{*}\PYG{n}{y} \PYG{o}{==} \PYG{n}{n}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 2ª definición:}
+\PYG{n+nf}{sumasDe2Cuadrados2} \PYG{o+ow}{::} \PYG{k+kt}{Integer} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[(}\PYG{k+kt}{Integer}\PYG{p}{,} \PYG{k+kt}{Integer}\PYG{p}{)]}
+\PYG{n+nf}{sumasDe2Cuadrado\PYGZus{}2} \PYG{n}{n} \PYG{o+ow}{=} 
+    \PYG{p}{[(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{,}\PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{l+m+mi}{0}\PYG{p}{],}
+             \PYG{n}{y} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{o}{..}\PYG{n}{x}\PYG{p}{],}
+             \PYG{n}{x}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{y}\PYG{o}{*}\PYG{n}{y} \PYG{o}{==} \PYG{n}{n}\PYG{p}{]}
+    \PYG{k+kr}{where} \PYG{n}{a} \PYG{o+ow}{=} \PYG{n}{ceiling} \PYG{p}{(}\PYG{n}{sqrt} \PYG{p}{(}\PYG{n}{fromIntegral} \PYG{n}{n}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 3ª definición:}
+\PYG{n+nf}{sumasDe2Cuadrados3} \PYG{o+ow}{::} \PYG{k+kt}{Integer} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[(}\PYG{k+kt}{Integer}\PYG{p}{,} \PYG{k+kt}{Integer}\PYG{p}{)]}
+\PYG{n+nf}{sumasDe2Cuadrado\PYGZus{}3} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{aux} \PYG{p}{(}\PYG{n}{ceiling} \PYG{p}{(}\PYG{n}{sqrt} \PYG{p}{(}\PYG{n}{fromIntegral} \PYG{n}{n}\PYG{p}{)))} \PYG{l+m+mi}{0} 
+    \PYG{k+kr}{where} \PYG{n}{aux} \PYG{n}{x} \PYG{n}{y} \PYG{o}{|} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{n}{y}          \PYG{o+ow}{=} \PYG{k+kt}{[]} 
+                  \PYG{o}{|} \PYG{n}{x}\PYG{o}{*}\PYG{n}{x} \PYG{o}{+} \PYG{n}{y}\PYG{o}{*}\PYG{n}{y} \PYG{o}{\PYGZlt{}}  \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{aux} \PYG{n}{x} \PYG{p}{(}\PYG{n}{y}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+                  \PYG{o}{|} \PYG{n}{x}\PYG{o}{*}\PYG{n}{x} \PYG{o}{+} \PYG{n}{y}\PYG{o}{*}\PYG{n}{y} \PYG{o}{==} \PYG{n}{n} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)} \PYG{k+kt}{:} \PYG{n}{aux} \PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{n}{y}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+                  \PYG{o}{|} \PYG{n}{otherwise}      \PYG{o+ow}{=} \PYG{n}{aux} \PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{y}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Comparación}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    | n        | 1ª definición | 2ª definición | 3ª definición |}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    |      999 | 2.17 segs     |   0.02 segs   | 0.01 segs     |  }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    | 48612265 |               | 140.38 segs   | 0.13 segs     |}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 3. Los árboles binarios pueden representarse mediante el}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tipo de datos Arbol definido por }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    data Arbol a = Nodo (Arbol a) (Arbol a) }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}                 | Hoja a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}                 deriving Show}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Por ejemplo, los árboles }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    árbol1          árbol2       árbol3     árbol4 }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}       o              o           o	        o    }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      / \PYGZbs{}            / \PYGZbs{}         / \PYGZbs{}	       / \PYGZbs{}   }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}     1   o          o   3       o   3	      o   1  }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}        / \PYGZbs{}        / \PYGZbs{}         / \PYGZbs{}	     / \PYGZbs{}     }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}       2   3      1   2       1   4	    2   3    }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} se representan por}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    arbol1, arbol2, arbol3, arbol4 :: Arbol Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    arbol1 = Nodo (Hoja 1) (Nodo (Hoja 2) (Hoja 3))}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    arbol2 = Nodo (Nodo (Hoja 1) (Hoja 2)) (Hoja 3)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    arbol3 = Nodo (Nodo (Hoja 1) (Hoja 4)) (Hoja 3)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    arbol4 = Nodo (Nodo (Hoja 2) (Hoja 3)) (Hoja 1)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    igualBorde :: Eq a =\PYGZgt{} Arbol a \PYGZhy{}\PYGZgt{} Arbol a \PYGZhy{}\PYGZgt{} Bool}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (igualBorde t1 t2) se verifica si los bordes de los árboles}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} t1 y t2 son iguales. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    igualBorde arbol1 arbol2  ==  True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    igualBorde arbol1 arbol3  ==  False}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    igualBorde arbol1 arbol4  ==  False}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{k+kr}{data} \PYG{k+kt}{Arbol} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Arbol} \PYG{n}{a}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Arbol} \PYG{n}{a}\PYG{p}{)} 
+             \PYG{o}{|} \PYG{k+kt}{Hoja} \PYG{n}{a}
+             \PYG{k+kr}{deriving} \PYG{k+kt}{Show}
+
+\PYG{n+nf}{arbol1}\PYG{p}{,} \PYG{n}{arbol2}\PYG{p}{,} \PYG{n}{arbol3}\PYG{p}{,} \PYG{n}{arbol4} \PYG{o+ow}{::} \PYG{k+kt}{Arbol} \PYG{k+kt}{Int}
+\PYG{n+nf}{arbol1} \PYG{o+ow}{=} \PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{3}\PYG{p}{))}
+\PYG{n+nf}{arbol2} \PYG{o+ow}{=} \PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{2}\PYG{p}{))} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n+nf}{arbol3} \PYG{o+ow}{=} \PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{4}\PYG{p}{))} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n+nf}{arbol4} \PYG{o+ow}{=} \PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Nodo} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{3}\PYG{p}{))} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{n+nf}{igualBorde} \PYG{o+ow}{::} \PYG{k+kt}{Eq} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Arbol} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Arbol} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{igualBorde} \PYG{n}{t1} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{n}{borde} \PYG{n}{t1} \PYG{o}{==} \PYG{n}{borde} \PYG{n}{t2}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (borde t) es el borde del árbol t; es decir, la lista de las hojas}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} del árbol t leídas de izquierda a derecha. Por ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    borde arbol4  ==  [2,3,1]}
+\PYG{n+nf}{borde} \PYG{o+ow}{::} \PYG{k+kt}{Arbol} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]}
+\PYG{n+nf}{borde} \PYG{p}{(}\PYG{k+kt}{Nodo} \PYG{n}{i} \PYG{n}{d}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{borde} \PYG{n}{i} \PYG{o}{++} \PYG{n}{borde} \PYG{n}{d}
+\PYG{n+nf}{borde} \PYG{p}{(}\PYG{k+kt}{Hoja} \PYG{n}{x}\PYG{p}{)}   \PYG{o+ow}{=} \PYG{p}{[}\PYG{n}{x}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 4. (Basado en el problema 145 del Proyecto Euler). }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Se dice que un número n es reversible si su última cifra es}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} distinta de 0 y la suma de n y el número obtenido escribiendo las}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} cifras de n en orden inverso es un número que tiene todas sus cifras}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} impares. Por ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} * 36  es reversible porque 36+63=99 tiene todas sus cifras impares, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} * 409 es reversible porque 409+904=1313 tiene todas sus cifras}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}       impares,   }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} * 243 no es reversible porque 243+342=585 no tiene todas sus cifras}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}       impares.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}   }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Definir la función }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores :: Int \PYGZhy{}\PYGZgt{} Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (reversiblesMenores n) es la cantidad de números reversibles}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} menores que n. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores 10   == 0}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores 100  == 20}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores 1000 == 120}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (reversiblesMenores n) es la cantidad de números reversibles menores}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} que n. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores 10   == 0}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores 100  == 20}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    reversiblesMenores 1000 == 120}
+\PYG{n+nf}{reversiblesMenores} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{reversiblesMenores} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{length} \PYG{p}{[}\PYG{n}{x} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{esReversible} \PYG{n}{x}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (esReversible n) se verifica si n es reversible; es decir, si su}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} última cifra es distinta de 0 y la suma de n y el número obtenido}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} escribiendo las cifras de n en orden inverso es un número que tiene}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} todas sus cifras impares. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    esReversible 36  == True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    esReversible 409 == True}
+\PYG{n+nf}{esReversible} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{esReversible} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{rem} \PYG{n}{n} \PYG{l+m+mi}{10} \PYG{o}{/=} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{impares} \PYG{p}{(}\PYG{n}{cifras} \PYG{p}{(}\PYG{n}{n} \PYG{o}{+} \PYG{p}{(}\PYG{n}{inverso} \PYG{n}{n}\PYG{p}{)))}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (impares xs) se verifica si xs es una lista de números impares. Por}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    impares [3,5,1] == True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    impares [3,4,1] == False}
+\PYG{n+nf}{impares} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Int}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{impares} \PYG{n}{xs} \PYG{o+ow}{=} \PYG{n}{and} \PYG{p}{[}\PYG{n}{odd} \PYG{n}{x} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{xs}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (inverso n) es el número obtenido escribiendo las cifras de n en}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} orden inverso. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    inverso 3034 == 4303}
+\PYG{n+nf}{inverso} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{inverso} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{read} \PYG{p}{(}\PYG{n}{reverse} \PYG{p}{(}\PYG{n}{show} \PYG{n}{n}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (cifras n) es la lista de las cifras del número n. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    cifras 3034 == [3,0,3,4]}
+\PYG{n+nf}{cifras} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Int}\PYG{p}{]}
+\PYG{n+nf}{cifras} \PYG{n}{n} \PYG{o+ow}{=} \PYG{p}{[}\PYG{n}{read} \PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{show} \PYG{n}{n}\PYG{p}{]}
+\end{Verbatim}

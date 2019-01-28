@@ -1,0 +1,75 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Informática (1º del Grado en Matemáticas, Grupo 1)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 5º examen de evaluación continua (17 de mayo de 2010)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1.1. Definir Haskell la función }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    primo :: Int \PYGZhy{}\PYGZgt{} Integer}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (primo n) es el n\PYGZhy{}ésimo número primo. Por ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    primo 5 = 11 }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{primo} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Integer}
+\PYG{n+nf}{primo} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{primos} \PYG{o}{!!} \PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} primos es la lista de los números primos. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    take 10 primos  ==  [2,3,5,7,11,13,17,19,23,29]}
+\PYG{n+nf}{primos} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Integer}\PYG{p}{]}
+\PYG{n+nf}{primos} \PYG{o+ow}{=} \PYG{l+m+mi}{2} \PYG{k+kt}{:} \PYG{p}{[}\PYG{n}{n} \PYG{o}{|} \PYG{n}{n} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{o}{..}\PYG{p}{],} \PYG{n}{esPrimo} \PYG{n}{n}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (esPrimo n) se verifica si n es primo. }
+\PYG{n+nf}{esPrimo} \PYG{o+ow}{::} \PYG{k+kt}{Integer}\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{esPrimo} \PYG{n}{n} \PYG{o+ow}{=} \PYG{p}{[}\PYG{n}{x} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{n}{n}\PYG{p}{],} \PYG{n}{rem} \PYG{n}{n} \PYG{n}{x} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1.2. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumaCifras :: Integer \PYGZhy{}\PYGZgt{} Integer}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (sumaCifras n) es la suma de las cifras del número n. Por}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumaCifras 325 = 10}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{sumaCifras} \PYG{o+ow}{::} \PYG{k+kt}{Integer} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Integer}
+\PYG{n+nf}{sumaCifras} \PYG{n}{n} 
+    \PYG{o}{|} \PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{10}    \PYG{o+ow}{=} \PYG{n}{n}
+    \PYG{o}{|} \PYG{n}{otherwise} \PYG{o+ow}{=} \PYG{n}{sumaCifras}\PYG{p}{(}\PYG{n}{div} \PYG{n}{n} \PYG{l+m+mi}{10}\PYG{p}{)} \PYG{o}{+} \PYG{n}{n} \PYG{p}{`}\PYG{n}{rem}\PYG{p}{`} \PYG{l+m+mi}{10}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1.3. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    primosSumaPar :: Int \PYGZhy{}\PYGZgt{} [Integer]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (primosSumaPar n) es el conjunto de elementos del conjunto de}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} los n primeros primos tales que la suma de sus cifras es par. Por}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    primosSumaPar 10 = [2,11,13,17,19]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{primosSumaPar} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Integer}\PYG{p}{]}
+\PYG{n+nf}{primosSumaPar} \PYG{n}{n} \PYG{o+ow}{=} 
+   \PYG{p}{[}\PYG{n}{x} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{take} \PYG{n}{n} \PYG{n}{primos}\PYG{p}{,} \PYG{n}{even} \PYG{p}{(}\PYG{n}{sumaCifras} \PYG{n}{x}\PYG{p}{)]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1.4. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    numeroPrimosSumaPar :: Int \PYGZhy{}\PYGZgt{} Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (numeroPrimosSumaPar n) es la cantidad de elementos del}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} conjunto de los n primeros primos tales que la suma de sus cifras es}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} par. Por ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    numeroPrimosSumaPar 10 = 5}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{numeroPrimosSumaPar} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{numeroPrimosSumaPar} \PYG{o+ow}{=} \PYG{n}{length} \PYG{o}{.} \PYG{n}{primosSumaPar}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1.5. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    puntos :: Int \PYGZhy{}\PYGZgt{} [(Int,Int)]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (puntos n) es la lista de los puntos de la forma (x,y) donde x}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} toma los valores 0,10,20,...,10*n e y es la cantidad de elementos del}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} conjunto de los x primeros primos tales que la suma de sus cifras es}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} par. Por ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    puntos 5 = [(0,0),(10,5),(20,10),(30,17),(40,21),(50,23)]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{puntos} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[(}\PYG{k+kt}{Int}\PYG{p}{,}\PYG{k+kt}{Int}\PYG{p}{)]}
+\PYG{n+nf}{puntos} \PYG{n}{n} \PYG{o+ow}{=} \PYG{p}{[(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{numeroPrimosSumaPar} \PYG{n}{i}\PYG{p}{)} \PYG{o}{|} \PYG{n}{i} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{o}{..}\PYG{l+m+mi}{10}\PYG{o}{*}\PYG{n}{n}\PYG{p}{]]}
+\end{Verbatim}

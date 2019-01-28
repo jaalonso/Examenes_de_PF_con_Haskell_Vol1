@@ -1,0 +1,68 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Informática (1º del Grado en Matemáticas, Grupo 1)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 1º examen de evaluación continua (30 de noviembre de 2009)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1. Definir, por recursión ,la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumaFactR :: Int \PYGZhy{}\PYGZgt{} Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (sumaFactR n) es la suma de los factoriales de los números}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} desde 0 hasta n. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumaFactR 3  ==  10}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{sumaFactR} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{sumaFactR} \PYG{l+m+mi}{0}     \PYG{o+ow}{=} \PYG{l+m+mi}{1}
+\PYG{n+nf}{sumaFactR} \PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{factorial} \PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{n}{sumaFactR} \PYG{n}{n}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (factorial n) es el factorial de n. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    factorial 4  ==  24}
+\PYG{n+nf}{factorial} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{product} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{n}{n}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 2. Definir, por comprensión, la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumaFactC :: Int \PYGZhy{}\PYGZgt{} Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (sumaFactC n) es la suma de los factoriales de los números}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} desde 0 hasta n. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    sumaFactC 3  ==  10}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{sumaFactC} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{sumaFactC} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{sum} \PYG{p}{[}\PYG{n}{factorial} \PYG{n}{x} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{o}{..}\PYG{n}{n}\PYG{p}{]]} 
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 3. Definir, por recursión, la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    copia :: [a] \PYGZhy{}\PYGZgt{} Int \PYGZhy{}\PYGZgt{} [a]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (copia xs n) es la lista obtenida copiando n veces la lista}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} xs. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    copia \PYGZdq{}abc\PYGZdq{} 3  ==  \PYGZdq{}abcabcabc\PYGZdq{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{copia} \PYG{o+ow}{::} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]}
+\PYG{n+nf}{copia} \PYG{n}{xs} \PYG{l+m+mi}{0} \PYG{o+ow}{=} \PYG{k+kt}{[]}
+\PYG{n+nf}{copia} \PYG{n}{xs} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{xs} \PYG{o}{++} \PYG{n}{copia} \PYG{n}{xs} \PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 4. Definir, por recursión, la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    incidenciasR :: Eq a =\PYGZgt{} a \PYGZhy{}\PYGZgt{} [a] \PYGZhy{}\PYGZgt{} Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (incidenciasR x ys) es el número de veces que aparece el}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} elemento x en la lista ys. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    incidenciasR 3 [7,3,5,3]  ==  2}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{incidenciasR} \PYG{o+ow}{::} \PYG{k+kt}{Eq} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{incidenciasR} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{[]}                 \PYG{o+ow}{=} \PYG{l+m+mi}{0}
+\PYG{n+nf}{incidenciasR} \PYG{n}{x} \PYG{p}{(}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{ys}\PYG{p}{)} \PYG{o}{|} \PYG{n}{x} \PYG{o}{==} \PYG{n}{y}    \PYG{o+ow}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{incidenciasR} \PYG{n}{x} \PYG{n}{ys}
+                      \PYG{o}{|} \PYG{n}{otherwise} \PYG{o+ow}{=} \PYG{n}{incidenciasR} \PYG{n}{x} \PYG{n}{ys}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 5. Definir, por comprensión, la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    incidenciasC :: Eq a =\PYGZgt{} a \PYGZhy{}\PYGZgt{} [a] \PYGZhy{}\PYGZgt{} Int}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (incidenciasC x ys) es el número de veces que aparece el}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} elemento x en la lista ys. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    incidenciasC 3 [7,3,5,3]  ==  2}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{incidenciasC} \PYG{o+ow}{::} \PYG{k+kt}{Eq} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{incidenciasC} \PYG{n}{x} \PYG{n}{ys} \PYG{o+ow}{=} \PYG{n}{length} \PYG{p}{[}\PYG{n}{y} \PYG{o}{|} \PYG{n}{y} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{ys}\PYG{p}{,} \PYG{n}{y} \PYG{o}{==} \PYG{n}{x}\PYG{p}{]}
+\end{Verbatim}

@@ -1,0 +1,109 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Informática (1º del Grado en Matemáticas, Grupo 1)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} 6º examen de evaluación continua (21 de junio de 2010)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{k+kr}{import} \PYG{n+nn}{Data.List}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 1. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    calculaPi :: Int \PYGZhy{}\PYGZgt{} Double}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (calculaPi n) es la aproximación del número pi calculada}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} mediante la expresión}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    4*(1 \PYGZhy{} 1/3 + 1/5 \PYGZhy{} 1/7 ... 1/(2*n+1))}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    calculaPi 3    ==  2.8952380952380956}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    calculaPi 300  ==  3.1449149035588526}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Indicación: La potencia es **, por ejemplo 2**3 es 8.0.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{calculaPi} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Double}
+\PYG{n+nf}{calculaPi} \PYG{n}{n} \PYG{o+ow}{=} \PYG{l+m+mi}{4} \PYG{o}{*} \PYG{n}{sum} \PYG{p}{[(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{**}\PYG{n}{x}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{o}{..}\PYG{n}{fromIntegral} \PYG{n}{n}\PYG{p}{]]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 3.1. En la Olimpiada de Matemática del 2010 se planteó el}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} siguiente problema: }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}   Una sucesión pucelana es una sucesión creciente de 16 números}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}   impares positivos consecutivos, cuya suma es un cubo perfecto. }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}   ¿Cuántas sucesiones pucelanas tienen solamente números de tres }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}   cifras? }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    pucelanas :: [[Int]]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que pucelanas es la lista de las sucesiones pucelanas. Por}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} ejemplo, }
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} head pucelanas}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    [17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{pucelanas} \PYG{o+ow}{::} \PYG{p}{[[}\PYG{k+kt}{Int}\PYG{p}{]]}
+\PYG{n+nf}{pucelanas} \PYG{o+ow}{=} \PYG{p}{[[}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{o}{..}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{30}\PYG{p}{]} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{p}{],}
+                             \PYG{n}{esCubo} \PYG{p}{(}\PYG{n}{sum} \PYG{p}{[}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{o}{..}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{30}\PYG{p}{])]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (esCubo n) se verifica si n es un cubo. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    esCubo 27  ==  True}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    esCubo 28  ==  False}
+\PYG{n+nf}{esCubo} \PYG{n}{x} \PYG{o+ow}{=} \PYG{n}{y}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{3}\PYG{o}{==} \PYG{n}{x}
+    \PYG{k+kr}{where} \PYG{n}{y} \PYG{o+ow}{=} \PYG{n}{ceiling} \PYG{p}{(}\PYG{n}{fromIntegral} \PYG{n}{x} \PYG{o}{**} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{3}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 3.2. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    pucelanasConNcifras :: Int \PYGZhy{}\PYGZgt{} [[Int]]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (pucelanasConNcifras n) es la lista de las sucesiones}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} pucelanas que tienen sólamente números de n cifras. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} pucelanasConNcifras 2}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    [[17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47]]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{pucelanasConNcifras} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[[}\PYG{k+kt}{Int}\PYG{p}{]]}
+\PYG{n+nf}{pucelanasConNcifras} \PYG{n}{n} \PYG{o+ow}{=} \PYG{p}{[[}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{o}{..}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{30}\PYG{p}{]} \PYG{o}{|} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{p}{[}\PYG{l+m+mi}{10}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{l+m+mi}{10}\PYG{o}{\PYGZca{}}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{31}\PYG{p}{],}
+                                         \PYG{n}{esCubo} \PYG{p}{(}\PYG{n}{sum} \PYG{p}{[}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{o}{..}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{30}\PYG{p}{])]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 3.3. Calcular cuántas sucesiones pucelanas tienen solamente}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} números de tres cifras.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} El cálculo es}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    ghci\PYGZgt{} length (pucelanasConNcifras 3)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    3}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Ejercicio 4. Definir la función}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    inflexion :: Ord a =\PYGZgt{} [a] \PYGZhy{}\PYGZgt{} Maybe a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} tal que (inflexion xs) es el primer elemento de la lista en donde se}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} cambia de creciente a decreciente o de decreciente a creciente y}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Nothing si no se cambia. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    inflexion [2,2,3,5,4,6]    ==  Just 4}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    inflexion [9,8,6,7,10,10]  ==  Just 7}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    inflexion [2,2,3,5]        ==  Nothing}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    inflexion [5,3,2,2]        ==  Nothing}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{inflexion} \PYG{o+ow}{::} \PYG{k+kt}{Ord} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Maybe} \PYG{n}{a}
+\PYG{n+nf}{inflexion} \PYG{p}{(}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)} 
+    \PYG{o}{|} \PYG{n}{x} \PYG{o}{\PYGZlt{}}  \PYG{n}{y} \PYG{o+ow}{=} \PYG{n}{decreciente} \PYG{p}{(}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)}
+    \PYG{o}{|} \PYG{n}{x} \PYG{o}{==} \PYG{n}{y} \PYG{o+ow}{=} \PYG{n}{inflexion} \PYG{p}{(}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)}
+    \PYG{o}{|} \PYG{n}{x} \PYG{o}{\PYGZgt{}}  \PYG{n}{y} \PYG{o+ow}{=} \PYG{n}{creciente} \PYG{p}{(}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)}
+\PYG{n+nf}{inflexion} \PYG{k+kr}{\PYGZus{}}  \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (creciente xs) es el segundo elemento de la primera parte creciente}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} de xs y Nothing, en caso contrario. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    creciente [4,3,5,6]  ==  Just 5}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    creciente [4,3,5,2,7]  ==  Just 5}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    creciente [4,3,2]  ==  Nothing}
+\PYG{n+nf}{creciente} \PYG{p}{(}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)} 
+    \PYG{o}{|} \PYG{n}{x} \PYG{o}{\PYGZlt{}}  \PYG{n}{y}    \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{n}{y}
+    \PYG{o}{|} \PYG{n}{otherwise} \PYG{o+ow}{=} \PYG{n}{creciente} \PYG{p}{(}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)}
+\PYG{n+nf}{creciente} \PYG{k+kr}{\PYGZus{}}     \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (decreciente xs) es el segundo elemento de la primera parte}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} decreciente de xs y Nothing, en caso contrario. Por ejemplo,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    decreciente [4,2,3,1,0]  ==  Just 2}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    decreciente [4,5,3,1,0]  ==  Just 3}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}    decreciente [4,5,7]      ==  Nothing}
+\PYG{n+nf}{decreciente} \PYG{p}{(}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)} 
+    \PYG{o}{|} \PYG{n}{x} \PYG{o}{\PYGZgt{}}  \PYG{n}{y}    \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{n}{y}
+    \PYG{o}{|} \PYG{n}{otherwise} \PYG{o+ow}{=} \PYG{n}{decreciente} \PYG{p}{(}\PYG{n}{y}\PYG{k+kt}{:}\PYG{n}{zs}\PYG{p}{)}
+\PYG{n+nf}{decreciente} \PYG{k+kr}{\PYGZus{}}   \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+\end{Verbatim}
