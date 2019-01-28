@@ -32,8 +32,5 @@ Los exámenes de cada grupo (y sus correspondientes profesores) son:
 + Grupo 3 (María J. Hidalgo)
   + [[Examenes/Grupo_3/examen_1_04_dic.hs][Examen 1]] (4 de diciembre de 2009)
   + [[Examenes/Grupo_3/examen_2_16_mar.hs][Examen 2]] (16 de marzo de 2010).
-  + [[Examenes/Grupo_3/examen_7_05_jul.txt][Examen 7]] (05 de julio de 2010).
-  + [[Examenes/Grupo_3/examen_8_15_sep.txt][Examen 8]] (15 de septiembre de 2010).
-  + [[Examenes/Grupo_3/examen_9_17_dic.txt][Examen 9]] (17 de diciembre de 2010).
    
 
